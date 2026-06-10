@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Quest | Guessing Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="game-panel" aria-labelledby="gameTitle">
+      <div class="game-copy">
+        <h1 id="gameTitle">Number Quest</h1>
+        <p class="subtitle">Find the secret number before your attempts run out.</p>
+      </div>
+
+      <div class="stats-grid" aria-label="Game status">
+        <div class="stat">
+          <span class="stat-label">Range</span>
+          <strong id="rangeLabel">1-100</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Attempts</span>
+          <strong><span id="attemptsUsed">0</span>/<span id="attemptLimit">10</span></strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Score</span>
+          <strong id="scoreLabel">100</strong>
+        </div>
+      </div>
+
+      <div class="difficulty-row" role="group" aria-label="Difficulty">
+        <button class="difficulty-button" type="button" data-level="easy">Easy</button>
+        <button class="difficulty-button is-active" type="button" data-level="medium">Medium</button>
+        <button class="difficulty-button" type="button" data-level="hard">Hard</button>
+      </div>
+
+      <form class="guess-form" id="guessForm" novalidate>
+        <label for="guessInput">Your Guess</label>
+        <div class="input-row">
+          <input id="guessInput" name="guess" type="text" inputmode="numeric" autocomplete="off" placeholder="Enter a number">
+          <button type="submit">Guess</button>
+        </div>
+      </form>
+
+      <p class="feedback" id="feedback" role="status" aria-live="polite">Game ready. Make your first move.</p>
+
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="secondary-button" type="button" id="newGameButton">New Game</button>
+        <button class="secondary-button" type="button" id="hintButton">Hint</button>
+      </div>
+    </section>
+
+    <section class="side-panel" aria-label="Round summary">
+      <div class="number-window" aria-hidden="true">
+        <canvas id="sparkCanvas" width="420" height="260"></canvas>
+        <div class="secret-number" id="secretVisual">?</div>
+      </div>
+
+      <div class="history-panel">
+        <h2>Guess History</h2>
+        <ol id="historyList" class="history-list">
+          <li class="empty-history">No guesses yet</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
